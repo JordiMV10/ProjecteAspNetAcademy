@@ -1040,11 +1040,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.DAL.EFCore\\Common.Lib.DAL.EFCore.csproj",
+      "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.DAL.EFCore\\Common.Lib.DAL.EFCore.csproj",
       "projectName": "Common.Lib.DAL.EFCore",
-      "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.DAL.EFCore\\Common.Lib.DAL.EFCore.csproj",
+      "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.DAL.EFCore\\Common.Lib.DAL.EFCore.csproj",
       "packagesPath": "C:\\Users\\jordi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.DAL.EFCore\\obj\\",
+      "outputPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.DAL.EFCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -1064,8 +1064,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj": {
-              "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj"
+            "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj": {
+              "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj"
             }
           }
         }
