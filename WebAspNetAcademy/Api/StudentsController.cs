@@ -21,21 +21,21 @@ namespace WebAspNetAcademy.Api
             _context = context;
 
 
-            if (context.Students.Count() == 0)
-            {
-                var std1 = new Student();
-                std1.Id = Guid.NewGuid();
-                std1.Name = "Perico";
+            //if (context.Students.Count() == 0)
+            //{
+            //    var std1 = new Student();
+            //    std1.Id = Guid.NewGuid();
+            //    std1.Name = "Perico";
 
-                var std2 = new Student();
-                std2.Id = Guid.NewGuid();
-                std2.Name = "Lola";
+            //    var std2 = new Student();
+            //    std2.Id = Guid.NewGuid();
+            //    std2.Name = "Lola";
 
-                context.Students.Add(std1);
-                context.Students.Add(std2);
+            //    context.Students.Add(std1);
+            //    context.Students.Add(std2);
 
-                context.SaveChanges();
-            }
+            //    context.SaveChanges();
+            //}
 
         }
 

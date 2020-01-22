@@ -22,7 +22,7 @@ namespace WebAspNetAcademy.DbContextFactory
             var dbConnection = configuration.GetConnectionString("AcademyDbConnection");
 
             var optionsBuilder = new DbContextOptionsBuilder<AcademyDbContext>();
-            optionsBuilder.UseSqlite(dbConnection, x => x.MigrationsAssembly("WebAspNetAcademy"));
+            optionsBuilder.UseSqlServer(dbConnection, x => x.MigrationsAssembly("WebAspNetAcademy"));
 
             return new AcademyDbContext(optionsBuilder.Options);
         }

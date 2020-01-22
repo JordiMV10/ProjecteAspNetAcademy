@@ -3,6 +3,7 @@ using System;
 using Academy.Lib.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebAspNetAcademy.Migrations
@@ -14,17 +15,19 @@ namespace WebAspNetAcademy.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1");
+                .HasAnnotation("ProductVersion", "3.1.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Common.Lib.Core.Entity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -38,16 +41,16 @@ namespace WebAspNetAcademy.Migrations
                     b.HasBaseType("Common.Lib.Core.Entity");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("SubjectId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Text")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Exam");
                 });
@@ -57,16 +60,16 @@ namespace WebAspNetAcademy.Migrations
                     b.HasBaseType("Common.Lib.Core.Entity");
 
                     b.Property<int>("ChairNumber")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Dni")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
@@ -76,16 +79,16 @@ namespace WebAspNetAcademy.Migrations
                     b.HasBaseType("Common.Lib.Core.Entity");
 
                     b.Property<Guid>("ExamId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("HasCheated")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bit");
 
                     b.Property<double>("Mark")
-                        .HasColumnType("REAL");
+                        .HasColumnType("float");
 
                     b.Property<Guid>("StudentId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasDiscriminator().HasValue("StudentExam");
                 });
@@ -96,11 +99,11 @@ namespace WebAspNetAcademy.Migrations
 
                     b.Property<Guid>("StudentId")
                         .HasColumnName("StudentSubject_StudentId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("SubjectId")
                         .HasColumnName("StudentSubject_SubjectId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasDiscriminator().HasValue("StudentSubject");
                 });
@@ -111,10 +114,10 @@ namespace WebAspNetAcademy.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnName("Subject_Name")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Teacher")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Subject");
                 });

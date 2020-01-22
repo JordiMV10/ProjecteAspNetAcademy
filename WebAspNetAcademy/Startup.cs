@@ -59,13 +59,13 @@ namespace WebAspNetAcademy
             services.AddControllers();
 
             var dbConnection = Configuration.GetConnectionString("AcademyDbConnection");
-            services.AddDbContext<AcademyDbContext>(options => options.UseSqlite(dbConnection, b => b.MigrationsAssembly("WebAspNetAcademy")));
+            services.AddDbContext<AcademyDbContext>(options => options.UseSqlServer(dbConnection, b => b.MigrationsAssembly("WebAspNetAcademy")));
 
             var bootstrapper = new Bootstrapper();
-            Entity.DepCon = new SimpleDependencyContainer();
+            //Entity.DepCon = new SimpleDependencyContainer();
 
-            bootstrapper.Init(Entity.DepCon, GetDbConstructor(dbConnection));  //original
-            //bootstrapper.Init();   //MEU
+            //bootstrapper.Init(Entity.DepCon, GetDbConstructor(dbConnection));  //original
+            bootstrapper.Init();   //MEU
 
 
         }
@@ -73,7 +73,7 @@ namespace WebAspNetAcademy
         private static Func<AcademyDbContext> GetDbConstructor(string dbConnection)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AcademyDbContext>();
-            optionsBuilder.UseSqlite(dbConnection, b => b.MigrationsAssembly("WebAspNetAcademy"));
+            optionsBuilder.UseSqlServer(dbConnection, b => b.MigrationsAssembly("WebAspNetAcademy"));
 
             var dbContextConst = new Func<AcademyDbContext>(() =>
             {
