@@ -52,6 +52,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
             }
         }
 
+
         private string _nameSEVM;
         public string NameSEVM
         {
@@ -62,6 +63,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
                 OnPropertyChanged();
             }
         }
+
 
         private string _titleSEVM;
 
@@ -108,6 +110,23 @@ namespace WPFAcademyMVVMFinal.ViewModels
             }
 
         }
+
+
+        private string _markTextSEVM;
+        public string MarkTextSEVM
+        {
+            get
+            {
+                return _markTextSEVM;
+            }
+            set
+            {
+                _markTextSEVM = value;
+                OnPropertyChanged();
+            }
+
+        }
+
 
 
         private bool _hasCheatedSEVM;
@@ -179,7 +198,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
 
 
 
-        List<ErrorMessage> _errorsList;  //Nou
+        List<ErrorMessage> _errorsList;  
         public List<ErrorMessage> ErrorsList
         {
             get
@@ -223,53 +242,76 @@ namespace WPFAcademyMVVMFinal.ViewModels
         }
 
 
+        public void MarkStringToDouble()
+        {
+            StudentExam studentExam = new StudentExam();
+            var markVR = studentExam.ValidateMark(MarkTextSEVM);
+            if (!markVR.IsSuccess)
+            {
+                ErrorsList = markVR.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();
+                CurrentStudentSEVM = null;
+                CurrentExamSEVM = null;
+                DniSEVM = "";
+                NameSEVM = "";
+                MarkTextSEVM = "";
+                HasCheatedSEVM = false;
+            }
+
+            else
+            {
+                MarkSEVM = markVR.ValidatedResult;
+            }
+
+        }
+
+
+
         bool isEdit = false;
 
-        public void SaveStudentExamsSEVM()   //Pdte probar funcionamiento
+        public void SaveStudentExamsSEVM()   
         {
-
+            MarkStringToDouble();
             StudentExam studentExamsSEVM = new StudentExam();
-            //{
-            //    Mark = MarkSEVM,
-            //    HasCheated = HasCheatedSEVM
-            //};
 
-            Exam exam = new Exam();
-            Student student = new Student();
-            ErrorsList = new List<ErrorMessage>();
-
-
-            exam = CurrentExamSEVM;
-            student = CurrentStudentSEVM;
-            if (CurrentStudentExamSEVM != null)
+            if (MarkSEVM != 0)
             {
-                studentExamsSEVM = CurrentStudentExamSEVM;
-            }
+
+                Exam exam = new Exam();
+                Student student = new Student();
+                ErrorsList = new List<ErrorMessage>();
+
+
+                exam = CurrentExamSEVM;
+                student = CurrentStudentSEVM;
+                if (CurrentStudentExamSEVM != null)
+                {
+                    studentExamsSEVM = CurrentStudentExamSEVM;
+                }
+
                 studentExamsSEVM.Mark = MarkSEVM;
                 studentExamsSEVM.HasCheated = HasCheatedSEVM;
-
-            //}
-
-            if (CurrentStudentSEVM != null)
-            {
-                studentExamsSEVM.StudentId = student.Id;
-                
-
-                if (CurrentExamSEVM != null)
+                if (CurrentStudentSEVM != null)
                 {
+                    studentExamsSEVM.StudentId = student.Id;
 
-                    studentExamsSEVM.ExamId = exam.Id;
+                    if (CurrentExamSEVM != null)
+                    {
+                        studentExamsSEVM.ExamId = exam.Id;
+                    }
                 }
+
+                studentExamsSEVM.Save();
+
+                ErrorsList = studentExamsSEVM.CurrentValidation.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();  //Nou
+
+                if (CurrentStudentSEVM != null || CurrentStudentExamSEVM != null)
+                {
+                    GetStudentExamsSEVM();
+                    MarkTextSEVM = "";
+                }
+
             }
 
-            studentExamsSEVM.Save();
-
-            ErrorsList = studentExamsSEVM.CurrentValidation.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();  //Nou
-
-            if (CurrentStudentSEVM != null || CurrentStudentExamSEVM != null)
-            {
-                GetStudentExamsSEVM();
-            }
 
             CurrentStudentSEVM = null;
             _currentExamSEVM = null;
@@ -287,29 +329,31 @@ namespace WPFAcademyMVVMFinal.ViewModels
 
 
 
-
-
-
-
-
-        public void EditStudentExamsSEVM()  //Pdte. Repasar y probar mejor. parece funciona OK
+        public void EditStudentExamsSEVM()  
         {
-            StudentExam studentExam = new StudentExam();
+            if (CurrentStudentSEVM != null)
+            {
+                StudentExam studentExam = new StudentExam();
 
-            DniSEVM = CurrentStudentExamSEVM.Student.Dni;
-            NameSEVM = CurrentStudentExamSEVM.Student.Name;
-            TitleSEVM = CurrentStudentExamSEVM.Exam.Text;
-            SubjectNameSEVM = CurrentStudentExamSEVM.Exam.Subject.Name;
-            DateSEVM = CurrentStudentExamSEVM.Exam.Date;
-            MarkSEVM = CurrentStudentExamSEVM.Mark;
-            HasCheatedSEVM = CurrentStudentExamSEVM.HasCheated;
+                DniSEVM = CurrentStudentExamSEVM.Student.Dni;
+                NameSEVM = CurrentStudentExamSEVM.Student.Name;
+                TitleSEVM = CurrentStudentExamSEVM.Exam.Text;
+                SubjectNameSEVM = CurrentStudentExamSEVM.Exam.Subject.Name;
+                DateSEVM = CurrentStudentExamSEVM.Exam.Date;
+                MarkTextSEVM = CurrentStudentExamSEVM.Mark.ToString();
 
-            CurrentExamSEVM = CurrentStudentExamSEVM.Exam;
+                HasCheatedSEVM = CurrentStudentExamSEVM.HasCheated;
+
+                CurrentExamSEVM = CurrentStudentExamSEVM.Exam;
+
+            }
+            else
+                NameSEVM = "No has seleccionado ningún Student";
 
         }
 
 
-        public void DelStudentExamsSEVM()    //Funciona OK
+        public void DelStudentExamsSEVM()    
         {
             StudentExam studentExam = new StudentExam();
 
@@ -330,20 +374,13 @@ namespace WPFAcademyMVVMFinal.ViewModels
 
                 GetStudentExamsSEVM();
 
-                //DniSEVM = "";
-                //NameSEVM = "";
-                //TitleSEVM = "";
-                //SubjectNameSEVM = "";
-                //DateSEVM = default;
-                //MarkSEVM = 0;
-                //HasCheatedSEVM = false;
 
             }
         }
 
 
 
-        private void FindStudentSEVM()   //Funciona OK  
+        private void FindStudentSEVM()    
         {
             var studentsVM = new StudentsViewModel();
             StudentSubject studentSubjectMVM = new StudentSubject();
@@ -374,25 +411,36 @@ namespace WPFAcademyMVVMFinal.ViewModels
         }
 
 
-        public void GetExamsSEVM()  //OK Funciona bien
+        public void GetExamsSEVM()  
         {
             Exam exam = new Exam();
             var repo = Student.DepCon.Resolve<IRepository<Exam>>();
             ExamsListSEVM = repo.QueryAll().ToList();
         }
 
-        public void SelExamSEVM()  //OK Funciona bien
+        public void SelExamSEVM()  
         {
             Exam exam = new Exam();
+            if (CurrentStudentSEVM==null)
+            {
+                NameSEVM = "No has seleccionado alumno";
+                MarkTextSEVM = "";
+            }
 
-            exam = CurrentExamSEVM;
+            else
+            {
+                exam = CurrentExamSEVM;
 
-            TitleSEVM = CurrentExamSEVM.Title;
-            SubjectNameSEVM = CurrentExamSEVM.Subject.Name;
-            DateSEVM = CurrentExamSEVM.Date;
+                TitleSEVM = CurrentExamSEVM.Title;
+                SubjectNameSEVM = CurrentExamSEVM.Subject.Name;
+                DateSEVM = CurrentExamSEVM.Date;
+                MarkTextSEVM = "";
+
+            }
+
         }
 
-        public void GetStudentExamsSEVM()  //  OK funciona perfecto !!.
+        public void GetStudentExamsSEVM()  
         {
             Student student = new Student();
             Exam exam = new Exam();

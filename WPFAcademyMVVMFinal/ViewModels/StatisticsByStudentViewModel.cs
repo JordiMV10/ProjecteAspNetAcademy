@@ -155,6 +155,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
             }
         }
 
+
         List<StudentExam> _studentExamsListSVM;
         public List<StudentExam> StudentExamsListSVM
         {
@@ -182,6 +183,21 @@ namespace WPFAcademyMVVMFinal.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        List<StudentExam> _maxMinListSVM;
+        public List<StudentExam> MaxMinListSVM
+        {
+            get
+            {
+                return _maxMinListSVM;
+            }
+            set
+            {
+                _maxMinListSVM = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         #endregion
 
@@ -234,14 +250,20 @@ namespace WPFAcademyMVVMFinal.ViewModels
             }
         }
 
-        public List<string> GetSubjectsByNameEV()  
+        public List<string> GetSubjectsByNameEV()
         {
             GetSubjectsToStudent();
             List<string> SubjectsNameListEV = new List<string>();
+            var repo = Subject.DepCon.Resolve<IRepository<Subject>>();
+
             foreach (StudentSubject subj in SubjectsByStudentList)
             {
-                var name = subj.Subject.Name;
-                SubjectsNameListEV.Add(name);
+                var studentSubject = new StudentSubject();  
+                var subject = new Subject();
+
+                subject = repo.QueryAll().FirstOrDefault(x=> x.Id==subj.SubjectId);
+
+                SubjectsNameListEV.Add(subject.Name);
             }
             return SubjectsNameListEV;
         }
@@ -312,7 +334,11 @@ namespace WPFAcademyMVVMFinal.ViewModels
             if (marksList ==null) { }
             
             else
+            {
                 MarkSVM = marksList.Average();
+                MaxMinListSVM = StudentExamsBySubjectListSVM.FindAll(x => x.Mark == MarkSVM).ToList();
+                MaxMinListSVM.Clear();
+            }
 
         }
 
@@ -325,7 +351,10 @@ namespace WPFAcademyMVVMFinal.ViewModels
             if (marksList == null) { }
 
             else
-                MarkSVM = marksList.Max() ;
+            {
+                MarkSVM = marksList.Max();
+                MaxMinListSVM = StudentExamsBySubjectListSVM.FindAll(x => x.Mark == MarkSVM).ToList();
+            }
 
         }
         
@@ -338,8 +367,11 @@ namespace WPFAcademyMVVMFinal.ViewModels
 
             if (marksList == null) { }
 
-            else
+            else 
+            {
                 MarkSVM = marksList.Min();
+                MaxMinListSVM = StudentExamsBySubjectListSVM.FindAll(x => x.Mark == MarkSVM).ToList();
+            }
 
         }
 

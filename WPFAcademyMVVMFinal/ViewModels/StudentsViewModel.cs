@@ -1,5 +1,6 @@
 ﻿using Academy.Lib.Models;
 using Common.Lib.Core.Context;
+using Common.Lib.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
         public ICommand SaveStudentCommand { get; set; }
         public ICommand GetStudentsCommand { get; set; }
 
-        public ICommand DelStudentCommand { get; set; } //Meu funciona OK
+        public ICommand DelStudentCommand { get; set; } 
         public ICommand EditStudentCommand { get; set; }
         #endregion
 
@@ -54,6 +55,19 @@ namespace WPFAcademyMVVMFinal.ViewModels
             }
         }
 
+        private string _chairTextVM;
+
+        public string ChairTextVM
+        {
+            get { return _chairTextVM; }
+            set
+            {
+                _chairTextVM = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private int _chairNumberVM;
 
         public int ChairNumberVM
@@ -80,7 +94,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
 
 
         private Student _currentStudent;
-        public Student CurrentStudent  //Meu ok funciona !!
+        public Student CurrentStudent  
         {
             get { return _currentStudent; }
             set
@@ -120,36 +134,65 @@ namespace WPFAcademyMVVMFinal.ViewModels
             }
         }
 
+        
+        public void ChairStringToInt()
+        {
+            var chairVR = Student.ValidateChairNumber(ChairTextVM);
+            if (!chairVR.IsSuccess)
+            {
+                ErrorsList = chairVR.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();
+                CurrentStudent = null;
+                DniVM = "";
+                NameVM = "";
+                ChairTextVM = "";
+                EmailVM = "";
+            }
+
+            else
+            {
+                ChairNumberVM = chairVR.ValidatedResult;
+            }
+
+        }
+
+
 
         bool isEdit = false;
 
         public void SaveStudent()
         {
-            Student student = new Student()
+
+            ChairStringToInt();
+
+            if (ChairNumberVM != 0)
             {
-                Dni = DniVM,
-                Name = NameVM,
-                ChairNumber = ChairNumberVM,
-                Email = EmailVM
+                Student student = new Student()
+                {
+                    Dni = DniVM,
+                    Name = NameVM,
+                    ChairNumber = ChairNumberVM,
+                    Email = EmailVM
 
-            };
+                };
 
-            if (isEdit == false)
+                if (isEdit == false)
+                    CurrentStudent = null;
+
+                if (CurrentStudent != null)
+                    student.Id = CurrentStudent.Id;
+
+                student.Save();
+
+
+                ErrorsList = student.CurrentValidation.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();
+                GetStudents();
                 CurrentStudent = null;
+                DniVM = "";
+                NameVM = "";
+                ChairTextVM = "";
+                EmailVM = "";
 
-            if (CurrentStudent != null)
-                student.Id = CurrentStudent.Id;
-
-            student.Save();  
-
-
-            ErrorsList = student.CurrentValidation.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();
-            GetStudents();
-            CurrentStudent = null;
-            DniVM = "";
-            NameVM = "";
-            ChairNumberVM = 0;
-            EmailVM = "";
+            }
 
             isEdit = false;
         }
@@ -164,7 +207,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
         }
 
 
-        public void DelStudent()    //Meu, verificado funciona OK
+        public void DelStudent()    
         {
 
             Student student = new Student();
@@ -185,7 +228,6 @@ namespace WPFAcademyMVVMFinal.ViewModels
                 ErrorsList = new List<ErrorMessage>();
                 ErrorsList = student.CurrentValidation.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();
 
-
                 GetStudents();
 
                 DniVM = "";
@@ -198,7 +240,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
 
 
 
-        public void EditStudent()   //Meu : Funciona ok. 
+        public void EditStudent()    
         {
             var student = new Student();
 
@@ -206,7 +248,6 @@ namespace WPFAcademyMVVMFinal.ViewModels
             {
                 student.Save();
                 ErrorsList = student.CurrentValidation.Errors.Select(x => new ErrorMessage() { Message = x }).ToList();
-
             }
 
             else

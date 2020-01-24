@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj": {}
+    "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj": {
+    "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj",
+        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj",
         "projectName": "Common.Lib.Client",
-        "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj",
+        "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.Client\\Common.Lib.Client.csproj",
         "packagesPath": "C:\\Users\\jordi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Common.Lib.Client\\obj\\",
+        "outputPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Common.Lib.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -31,8 +31,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj": {
-                "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj"
+              "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj": {
+                "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj"
               }
             }
           }
@@ -67,14 +67,14 @@
         }
       }
     },
-    "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj": {
+    "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj",
+        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj",
         "projectName": "Common.Lib",
-        "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\Common.Lib.csproj",
+        "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\Common.Lib.csproj",
         "packagesPath": "C:\\Users\\jordi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\0 Core\\Core.Lib\\obj\\",
+        "outputPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\0 Core\\Core.Lib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
