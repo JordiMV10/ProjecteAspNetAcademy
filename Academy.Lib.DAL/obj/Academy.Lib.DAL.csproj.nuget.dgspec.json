@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj": {}
+    "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj": {
+    "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj",
         "projectName": "Academy.Lib.DAL",
-        "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj",
+        "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib.DAL\\Academy.Lib.DAL.csproj",
         "packagesPath": "C:\\Users\\jordi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib.DAL\\obj\\",
+        "outputPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -31,8 +31,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib\\Academy.Lib.csproj": {
-                "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib\\Academy.Lib.csproj"
+              "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib\\Academy.Lib.csproj": {
+                "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib\\Academy.Lib.csproj"
               }
             }
           }
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib\\Academy.Lib.csproj": {
+    "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib\\Academy.Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib\\Academy.Lib.csproj",
+        "projectUniqueName": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib\\Academy.Lib.csproj",
         "projectName": "Academy.Lib",
-        "projectPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib\\Academy.Lib.csproj",
+        "projectPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib\\Academy.Lib.csproj",
         "packagesPath": "C:\\Users\\jordi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jordi\\source\\repos\\WPFAcademyMVVMFinal\\Academy.Lib\\obj\\",
+        "outputPath": "C:\\Users\\jordi\\source\\repos\\ProjecteAspNetAcademy\\Academy.Lib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

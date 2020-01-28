@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Academy.Lib.DAL;
 using Academy.Lib.Models;
+using Common.Lib.Core.Context;
+using Common.Lib.Core;
+using Common.Lib.Infrastructure;
 
 namespace WebAspNetAcademy.Api
 {
@@ -43,86 +46,127 @@ namespace WebAspNetAcademy.Api
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
-            return await _context.Students.ToListAsync();
+            var repo = Entity.DepCon.Resolve<IRepository<Student>>();  //MEU OK
+            return await repo.QueryAll().ToListAsync();     //MEU OK
+
+
+
+            //return await _context.Students.ToListAsync();  //Original
         }
 
         // GET: api/Students/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetStudent(Guid id)
         {
-            var student = await _context.Students.FindAsync(id);
+
+            var repo = Entity.DepCon.Resolve<IRepository<Student>>();  //MEU
+
+            var student = await repo.QueryAll().FirstOrDefaultAsync(s => s.Id == id);  //MEU
+            //var student = await _context.Students.FindAsync(id);  //Original
 
             if (student == null)
             {
                 return NotFound();
             }
 
-            return student;
+            return  student;
         }
 
         // PUT: api/Students/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(Guid id, Student student)
+        public async Task<SaveResult<Student>> PutStudent(Guid id, Student student)
         {
-            if (id != student.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(student).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StudentExists(id))
+                return await Task.Run(() =>
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                    return student.Save();
+                });
 
-            return NoContent();
+
+
+
+            //if (id != student.Id)
+            //{
+            //    return BadRequest();
+            //}
+
+            //_context.Entry(student).State = EntityState.Modified;
+
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!StudentExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            //return NoContent();
         }
 
         // POST: api/Students
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Student>> PostStudent(Student student)
+        public async Task<SaveResult<Student>> PostStudent(Student student)
         {
-            _context.Students.Add(student);
-            await _context.SaveChangesAsync();
+            return await Task.Run(() =>
+            {
+                return student.Save();
+            });
 
-            return CreatedAtAction("GetStudent", new { id = student.Id }, student);
+
+            //_context.Students.Add(student);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetStudent", new { id = student.Id }, student);
         }
 
         // DELETE: api/Students/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Student>> DeleteStudent(Guid id)
+        public async Task<DeleteResult<Student>> DeleteStudent(Guid id)
         {
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var repo = Entity.DepCon.Resolve<IRepository<Student>>();  //MEU
+
+            var student = await repo.QueryAll().FirstOrDefaultAsync(s => s.Id == id);  //MEU
+
+
+            return await Task.Run(() =>
             {
-                return NotFound();
-            }
+                
+                return student.Delete();
+            });
 
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
 
-            return student;
+
+            //var student = await _context.Students.FindAsync(id);
+            //if (student == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //_context.Students.Remove(student);
+            //await _context.SaveChangesAsync();
+
+            //return student;
         }
 
         private bool StudentExists(Guid id)
         {
-            return _context.Students.Any(e => e.Id == id);
+            var repo = Entity.DepCon.Resolve<IRepository<Student>>();  //MEU
+
+            return repo.QueryAll().Any(s => s.Id == id);  //MEU
+
+
+            //return _context.Students.Any(e => e.Id == id);
         }
     }
 }

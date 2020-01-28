@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\jordi\source\repos\WPFAcademyMVVMFinal\WPFAcademyMVVMFinal\obj\Debug\netcoreapp3.1\
+C:\Users\jordi\source\repos\ProjecteAspNetAcademy\WPFAcademyMVVMFinal\obj\Debug\netcoreapp3.1\
 WPFAcademyMVVMFinal
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\jordi\source\repos\WPFAcademyMVVMFinal\WPFAcademyMVVMFinal\App.xaml
+C:\Users\jordi\source\repos\ProjecteAspNetAcademy\WPFAcademyMVVMFinal\App.xaml
 10-2105710315
 
 28-1733490461
-225-353413612
+225-2111992741
 MainWindow.xaml;Views\ExamsView.xaml;Views\StatisticsByExamsView.xaml;Views\StatisticsByStudentsView.xaml;Views\StatisticsBySubjectsView.xaml;Views\StatisticsView.xaml;Views\StudentExamsView.xaml;Views\StudentSubjectsView.xaml;Views\StudentsView.xaml;Views\SubjectsView.xaml;
 
 False
