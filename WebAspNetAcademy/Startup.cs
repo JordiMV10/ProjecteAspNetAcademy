@@ -56,16 +56,14 @@ namespace WebAspNetAcademy
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllersWithViews();
 
             var dbConnection = Configuration.GetConnectionString("AcademyDbConnection");
             services.AddDbContext<AcademyDbContext>(options => options.UseSqlServer(dbConnection, b => b.MigrationsAssembly("WebAspNetAcademy")));
 
             var bootstrapper = new Bootstrapper();
-            //Entity.DepCon = new SimpleDependencyContainer();
-
-            //bootstrapper.Init(Entity.DepCon, GetDbConstructor(dbConnection));  //original
-            bootstrapper.Init();   //MEU
+            bootstrapper.Init();  
 
 
         }
@@ -90,7 +88,18 @@ namespace WebAspNetAcademy
                 app.UseDeveloperExceptionPage();
             }
 
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            //    app.UseHsts();
+            //}
+
+
             app.UseHttpsRedirection();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -99,7 +108,10 @@ namespace WebAspNetAcademy
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+
+            });      
+
+
         }
 
 
