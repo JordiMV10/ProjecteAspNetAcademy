@@ -1,6 +1,5 @@
 ﻿<style type="text/css">
 
-    <title > "Vertical Menu bar "</title >
 
     #cssmenu {
         padding: 0;
@@ -46,15 +45,15 @@
         clear: both;
     }
 
-        #cssmenu a {
-            display: block;
-            padding: 15px 20px;
-            height: 80;
-            color: #f26724;
-            text-decoration: none;
-            text-transform: uppercase;
-            border-bottom: 1px solid #ffffff;
-        }
+    #cssmenu a {
+        display: block;
+        padding: 15px 20px;
+        height: 80;
+        color: #f26724;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-bottom: 1px solid #ffffff;
+    }
 
     #cssmenu > ul {
         width: 200px;
@@ -78,8 +77,8 @@
         font-weight: bold;
         zoom: 1;
         font-size: 12px;
-        margin-top:-320px;
-        margin-left:220px
+        margin-top:-740px;
+        margin-left:230px
     }
 
 </style>
@@ -93,7 +92,7 @@
         <login ng-if="!vm.IsLogon"></login>
         <div ng-if="vm.IsLogon">
 
-            
+
             <div id='cssmenu'>
                 <ul>
 
@@ -103,26 +102,11 @@
                     <li><a href="#!/exams/">Exams</a></li>
 
                 </ul>
-                <div id='cssmenu2'>
-                    <div ng-view></div>
-                </div>
 
             </div>
-
-
-          
-
-            <!--<div>
-            <ul>
-            <li><a href="#!/pagina1/">Ir a la pagina 1</a></li>
-            <li><a href="#!/pagina2/">Ir a la pagina 2</a></li>
-            <li><a href="#!/pagina3/">Ir a Menu</a></li>
-            <li><a href="#!/pagina4/">Ir a la pagina 4</a></li>
-            <li><a href="#!/pagina5/">Ir a la pagina 5</a></li>
-
-            </ul>
-            </div>-->
-
+            <div id='cssmenu2'>
+                <div ng-view></div>
+            </div>
 
 
         </div>
