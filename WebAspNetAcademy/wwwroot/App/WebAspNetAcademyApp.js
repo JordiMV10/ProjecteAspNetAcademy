@@ -8,32 +8,42 @@ var Globals = new ClientGlobals();
 
 WebAspNetAcademyApp.config(['$routeProvider', function ($routeProvider) {
 
-
-    $routeProvider.when('/pagina1', {
-        templateUrl: "./app/views/Home/menu/pagina1.html",
-        controller: "Pagina1Controller"
+    $routeProvider.when('/main', {
+        templateUrl: "./app/views/Home/menu/menu.html",
+        controller: "MenuController"
     });
 
-    $routeProvider.when('/pagina2', {
-        templateUrl: "./app/views/Home/menu/pagina2.html",
-        controller: "Pagina2Controller"
+
+    $routeProvider.when('/students', {
+        templateUrl: "./app/views/Home/menu/students/students.html",
+        controller: "StudentsController"
+    });
+
+    $routeProvider.when('/subjects', {
+        templateUrl: "./app/views/Home/menu/subjects/subjects.html",
+        controller: "SubjectsController"
     });
 
 
     $routeProvider.otherwise({
-        redirectTo: '/pagina2'
+        redirectTo: '/main'
     });
 
 }]);
 
 
-WebAspNetAcademyApp.controller("Pagina1Controller", ["$scope", function ($scope) {
-    $scope.mensaje = "Texto cargado desde el controlador Pagina1Controller";
+WebAspNetAcademyApp.controller("StudentsController", ["$scope", function ($scope) {
+    $scope.mensaje = "Texto cargado desde el controlador StudentsController";
 }]);
 
-WebAspNetAcademyApp.controller("Pagina2Controller", ["$scope", function ($scope) {
-    $scope.mensaje = "Texto cargado desde el controlador Pagina2Controller";
+WebAspNetAcademyApp.controller("SubjectsController", ["$scope", function ($scope) {
+    $scope.mensaje = "Texto cargado desde el controlador SubjectsController";
 }]);
+
+WebAspNetAcademyApp.controller("MenuController", ["$scope", function ($scope) {
+    $scope.mensaje = "Texto cargado desde el controlador MenuController";
+}]);
+
 
 
 

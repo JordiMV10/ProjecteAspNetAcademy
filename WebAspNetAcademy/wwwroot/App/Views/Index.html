@@ -1,24 +1,86 @@
-﻿<style>
+﻿<style type="text/css">
 
-    .Index {
-        width: 100%;
-        height: 100%;
-        margin-left: 30px;
+    <title > "Vertical Menu bar "</title >
+
+    #cssmenu {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        line-height: 1;
     }
 
-    .myGrid {
-        width: 900px;
-        height: 550px;
-        /*margin-left : 30px;*/
+    #cssmenu ul,
+    #cssmenu ul li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .btn-primary {
-        background-color: green;
+    #cssmenu ul li.hover,
+    #cssmenu ul li:hover {
+        position: relative;
+        z-index: 599;
+        cursor: default;
     }
 
-        .btn-primary:hover {
-            background-color: purple;
+    #cssmenu {
+        width: 200px;
+        height: 720px;
+        margin-top : 10px;
+        margin-left:20px;
+        background-color:darkgrey ;
+        font-family: sans-serif;
+        font-weight: bold;
+        zoom: 1;
+        font-size: 12px;
+    }
+
+    #cssmenu:before {
+        content: '';
+        display: block;
+    }
+
+    #cssmenu:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+        #cssmenu a {
+            display: block;
+            padding: 15px 20px;
+            height: 80;
+            color: #f26724;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ffffff;
         }
+
+    #cssmenu > ul {
+        width: 200px;
+    }
+
+    #cssmenu > ul > li > a {
+        border-left: 4px solid #095586;
+        color: #095586;
+    }
+
+    #cssmenu > ul > li a:hover {
+        background: #095586;
+        color: #f1f1f1;
+    }
+
+    #cssmenu2 {
+        width: 1250px;
+        height:720px;
+        background-color:cadetblue;
+        font-family: sans-serif;
+        font-weight: bold;
+        zoom: 1;
+        font-size: 12px;
+        margin-top:-320px;
+        margin-left:220px
+    }
 
 </style>
 
@@ -31,23 +93,38 @@
         <login ng-if="!vm.IsLogon"></login>
         <div ng-if="vm.IsLogon">
 
-            <h1>Esto es el titulo y no cambia</h1>
-            <div>
+            
+            <div id='cssmenu'>
                 <ul>
-                    <li><a href="#!/pagina1/">Ir a la pagina 1</a></li>
-                    <li><a href="#!/pagina2/">Ir a la pagina 2</a></li>
-                    <li><a href="#!/pagina3/">Ir a la pagina 3</a></li>
-                    <li><a href="#!/pagina4/">Ir a la pagina 4</a></li>
-                    <li><a href="#!/pagina5/">Ir a la pagina 5</a></li>
+
+                    <li><a href="#!/main/">Main</a></li>
+                    <li><a href="#!/students/">Students</a></li>
+                    <li><a href="#!/subjects/">Subjects</a></li>
+                    <li><a href="#!/exams/">Exams</a></li>
 
                 </ul>
+                <div id='cssmenu2'>
+                    <div ng-view></div>
+                </div>
+
             </div>
 
-            <div ng-view></div>
 
-            <h3>Esto es un pie y no cambia</h3>
+          
 
-            
+            <!--<div>
+            <ul>
+            <li><a href="#!/pagina1/">Ir a la pagina 1</a></li>
+            <li><a href="#!/pagina2/">Ir a la pagina 2</a></li>
+            <li><a href="#!/pagina3/">Ir a Menu</a></li>
+            <li><a href="#!/pagina4/">Ir a la pagina 4</a></li>
+            <li><a href="#!/pagina5/">Ir a la pagina 5</a></li>
+
+            </ul>
+            </div>-->
+
+
+
         </div>
     </div>
 

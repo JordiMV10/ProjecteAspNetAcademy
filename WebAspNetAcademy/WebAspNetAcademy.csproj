@@ -36,7 +36,6 @@
     <Folder Include="wwwroot\App\Views\Home\Menu\Statistics\" />
     <Folder Include="wwwroot\App\Views\Home\Menu\StudentExams\" />
     <Folder Include="wwwroot\App\Views\Home\Menu\StudentSubjects\" />
-    <Folder Include="wwwroot\App\Views\Home\Menu\Subjects\" />
     <Folder Include="wwwroot\App\Views\Start\Register\" />
     <Folder Include="wwwroot\js\Models\" />
   </ItemGroup>
