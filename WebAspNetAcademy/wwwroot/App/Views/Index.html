@@ -3,19 +3,52 @@
     .Index {
         width: 100%;
         height: 100%;
+        margin-left: 30px;
     }
 
     .myGrid {
-        width: 800px;
-        height: 450px;
+        width: 900px;
+        height: 550px;
+        /*margin-left : 30px;*/
     }
+
+    .btn-primary {
+        background-color: green;
+    }
+
+        .btn-primary:hover {
+            background-color: purple;
+        }
+
 </style>
 
-<div class="Index">
-    <login ng-if="!vm.IsLogon"></login>
-    <div ng-if="vm.IsLogon">
-        Hola Peludos !! Habéis entrado !
-        <input type="button" ng-click="vm.GetStudents()" value="Ver Students" />
-        <div ui-grid="{ data: vm.Students }" class="myGrid"></div>
+
+
+<body ng-app="WebAspNetAcademyApp">
+
+    <div class="Index">
+
+        <login ng-if="!vm.IsLogon"></login>
+        <div ng-if="vm.IsLogon">
+
+            <h1>Esto es el titulo y no cambia</h1>
+            <div>
+                <ul>
+                    <li><a href="#!/pagina1/">Ir a la pagina 1</a></li>
+                    <li><a href="#!/pagina2/">Ir a la pagina 2</a></li>
+                    <li><a href="#!/pagina3/">Ir a la pagina 3</a></li>
+                    <li><a href="#!/pagina4/">Ir a la pagina 4</a></li>
+                    <li><a href="#!/pagina5/">Ir a la pagina 5</a></li>
+
+                </ul>
+            </div>
+
+            <div ng-view></div>
+
+            <h3>Esto es un pie y no cambia</h3>
+
+            
+        </div>
     </div>
-</div>
+
+</body>

@@ -1,0 +1,36 @@
+﻿<style>
+
+    .Index {
+        width: 100%;
+        height: 100%;
+        margin-left : 30px;
+    }
+
+    .myGrid {
+        width: 900px;
+        height: 550px;
+        /*margin-left : 30px;*/
+    }
+
+    .btn-primary {
+        background-color:green;
+        
+    }
+
+    .btn-primary:hover {
+        background-color:purple;
+    }
+
+</style>
+
+<div class="Index">
+    <login ng-if="!vm.IsLogon"></login>
+    <div ng-if="vm.IsLogon">
+
+        <h1 class="text-left login-title">Hola Peludos !! Habéis entrado !</h1>
+        <input class="btn btn-lg btn-primary" type="button" ng-click="vm.GetStudents()" value="Ver Students" />
+        <input class="btn btn-lg btn-primary" type="button" ng-click="vm.GoMenu()" value="Ir a Menú" />
+
+        <div ui-grid="{ data: vm.Students }" class="myGrid"></div>
+    </div>
+</div>

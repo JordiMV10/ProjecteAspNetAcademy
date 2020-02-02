@@ -9,5 +9,7 @@ namespace WebAspNetAcademy.Models
     {
         public string Email { get; set; }
         public string Password { get; set; }
+
+        //DTO : Data Transfer Object
     }
 }

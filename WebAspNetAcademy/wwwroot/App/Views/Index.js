@@ -29,6 +29,26 @@
             }
         );
     }
+
+
+
+    //Meu
+
+    //GoMenu() {
+    //    this.Http.get("/app/views/home/menu/menu").then(
+    //        (response) => {
+
+    //            if (response.data === true)
+    //                Globals.IsLogon = true;
+    //        },
+    //        function errorCallback(response) {
+    //            console.log("POST-ing of data failed");
+    //        }
+    //    );
+    //}
+
+
+
 }
 Index.$inject = ['$http'];
 
@@ -38,3 +58,4 @@ WebAspNetAcademyApp.
         controller: ('index', Index),
         controllerAs: 'vm'
     });
+

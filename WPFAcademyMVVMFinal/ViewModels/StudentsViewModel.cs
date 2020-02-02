@@ -191,7 +191,7 @@ namespace WPFAcademyMVVMFinal.ViewModels
                 NameVM = "";
                 ChairTextVM = "";
                 EmailVM = "";
-
+                
             }
 
             isEdit = false;

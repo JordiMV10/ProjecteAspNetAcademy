@@ -23,15 +23,15 @@
     Login() {
         //alert("user:" + this.Email + " password:" + this.Password);
 
-        var data =
-        {
-            email: this.Email,
-            password: this.Password
-        };
-
+        //var data =
+        //{
+        //    email: this.Email,
+        //    password: this.Password
+        //};
+        var loginDto = new LoginDto(this.Email, this.Password);
 
         this.Http.post("/api/login",   
-            data
+            loginDto
 
         ).then(
             (response) => {
@@ -43,7 +43,6 @@
             }
         );
 
-        // Globals.IsLogon = true;   //Meu !!   OJO QUITAR PQ NO CONECTA BIEN, ESTO ES PARA PROBAR RESTO
     }
 }
 
