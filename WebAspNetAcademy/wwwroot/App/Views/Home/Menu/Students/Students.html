@@ -6,20 +6,20 @@
     }
 
     .myGrid {
-        width: 1200px;
-        height: 50px;
-        margin-top:320px;
-        margin-left:25px;
-        
+        width: 500px;
+        height: 450px;
+        /*margin-top:320px;
+        margin-left:25px;*/
     }
-
-
 </style>
-<body>
-    <h1>Estamos en Views Home Menu Students</h1>
+<div>
+    <p>Estamos en Views Home Menu Students</p>
 
 
     <input type="button" ng-click="vm.GetStudents()" value="GetStudents" />
-    <div ui-grid="{ data: vm.Students }" class="myGrid"></div>
 
-</body>
+
+
+</div>
+<div ui-grid="{ data: vm.Students }" class="myGrid"></div>
+

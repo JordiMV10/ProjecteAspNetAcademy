@@ -8,39 +8,47 @@ var Globals = new ClientGlobals();
 
 WebAspNetAcademyApp.config(['$routeProvider', function ($routeProvider) {
 
-    $routeProvider.when('/main', {
-        templateUrl: "./app/views/Home/menu/menu.html",
-        controller: "MenuController"
+    $routeProvider.when("/menu", {
+        templateUrl: "./app/views/Home/Menu/menu.html",
+        controller: ("menu", Menu),
+        controllerAs:"vm"
     });
 
 
-    $routeProvider.when('/students', {
+    $routeProvider.when("/students", {
         templateUrl: "./app/views/Home/menu/students/students.html",
-        controller: "StudentsController"
+        controller: ("students", Students),
+        controllerAs: "vm"
+
     });
 
-    $routeProvider.when('/subjects', {
+    $routeProvider.when("/subjects", {
         templateUrl: "./app/views/Home/menu/subjects/subjects.html",
-        controller: "SubjectsController"
+        controller: ("subjects", Subjects),
+        controllerAs: "vm"
     });
 
 
     $routeProvider.otherwise({
-        redirectTo: '/main'
+        redirectTo: "/menu"
     });
+
+    //$routeProvider.html5Mode(true);
+
+
 
 }]);
 
 
-WebAspNetAcademyApp.controller("StudentsController", ["$scope", function ($scope) {
+WebAspNetAcademyApp.controller("Students", ["$scope", function ($scope) {
     $scope.mensaje = "Texto cargado desde el controlador StudentsController";
 }]);
 
-WebAspNetAcademyApp.controller("SubjectsController", ["$scope", function ($scope) {
+WebAspNetAcademyApp.controller("Subjects", ["$scope", function ($scope) {
     $scope.mensaje = "Texto cargado desde el controlador SubjectsController";
 }]);
 
-WebAspNetAcademyApp.controller("MenuController", ["$scope", function ($scope) {
+WebAspNetAcademyApp.controller("Menu", ["$scope", function ($scope) {
     $scope.mensaje = "Texto cargado desde el controlador MenuController";
 }]);
 
